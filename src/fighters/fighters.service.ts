@@ -1,12 +1,16 @@
 import { Injectable } from '@nestjs/common';
 import { CreateFighterDto } from './dto/create-fighter.dto';
 import { UpdateFighterDto } from './dto/update-fighter.dto';
+import { InjectModel } from '@nestjs/mongoose';
+import { Fighter } from './schema/fighter.schema';
+import { Model } from 'mongoose';
 
 @Injectable()
 export class FightersService {
-  create(createFighterDto: CreateFighterDto) {
-    return 'This action adds a new fighter';
-  }
+  constructor(
+    @InjectModel(Fighter.name) private fighterModel: Model<Fighter>,
+  ) {}
+  create(createFighterDto: CreateFighterDto) {}
 
   findAll() {
     return `This action returns all fighters`;
