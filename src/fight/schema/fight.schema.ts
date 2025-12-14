@@ -5,7 +5,12 @@ import { WeightClass } from 'src/enums/weightClass.enum';
 
 @Schema({ timestamps: true })
 export class Fight {
-  // eventId: string
+  @Prop({
+    type: Types.ObjectId,
+    ref: 'Event',
+    required: true,
+  })
+  eventId: Types.ObjectId;
   @Prop({ type: Types.ObjectId, ref: 'Fighter', required: true })
   fighter1Id: Types.ObjectId;
 
